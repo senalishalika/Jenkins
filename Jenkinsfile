@@ -11,7 +11,7 @@ node{
     }
      stage('Build'){
          def mavenHome  = tool 'myMaven'
-         echo "${mvnHome}/bin/mvn package"
+         echo "${mavenHome}/bin/mvn package"
     }
    
 }
