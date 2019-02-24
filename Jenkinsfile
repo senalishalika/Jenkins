@@ -3,8 +3,15 @@ node{
         
         git 'https://github.com/senalishalika/Jenkins'
     }
-    stage('Compile-Package'){
-        def mvnHome = tool name: 'maven_3_5_0', type: 'maven'
-        echo "${mvnHome}/bin/mvn package"
+    stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        def mavenHome  = tool 'myMaven'
+        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+        
     }
+     stage('Build'){
+         def mavenHome  = tool 'myMaven'
+         echo "${mvnHome}/bin/mvn package"
+    }
+   
 }
